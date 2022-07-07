@@ -26,33 +26,9 @@ app.get("/", (req, res) => {
 app.get("/register", (req, res) => {
     res.render("register");
 })
-// app.get("/display", (req, res) => {
-//     res.render("display");
-// Register.find(function (err, Registers) {
-//     if (err) return console.error(err);
-//     // console.log(Registers);
-//     // res.status(200).send(Registers);
-//     res.status(201).render("display");
-// })
-// })
-
-// app.get('/display', async (req, res) => {
-//     await register.find({});
-// });
-// app.get('/display', (req, res) => {
-//     Register.find((err, docs) => {
-//         if (!err) {
-//             res.render("views/display", {
-//                 display: docs
-//             });
-//         }
-//         else {
-//             console.log('Failed to retrieve the data: ' + err);
-//         }
-//     });
-// });
-
-
+app.get("/display", (req, res) => {
+    res.render("display");
+})
 
 // create a new user in our database
 app.post("/register", async (req, res) => {
@@ -66,12 +42,13 @@ app.post("/register", async (req, res) => {
 
         const registered = await registerEmployee.save();
         res.status(201).render("display");
-        Register.find(function (err, Registers) {
-            if (err) return console.error(err);
-            // console.log(Registers);
-            // res.status(200).send(Registers);
-            res.status(201).render("display", { layout: 'Registers' });
-        })
+        // Register.find(function (err, Registers) {
+        //     if (err) return console.error(err);
+        //     // console.log(Registers);
+        //     // res.status(200).send(Registers);
+        //     res.status(200).render("display");
+        //     // res.status(201).render("display", { layout: 'Registers' });
+        // })
 
     } catch (error) {
         res.status(400).send(error);
